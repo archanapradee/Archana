@@ -1,0 +1,5 @@
+dataProvider\ConfigFileReader.class
+pagefactory\HomePage_PF.class
+StepDefinitions\TestRunner.class
+pagefactory\WeatherPage_PF.class
+StepDefinitions\WeatherSteps.class
