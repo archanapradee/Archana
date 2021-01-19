@@ -29,6 +29,12 @@ public class HomePage_PF{
 		lnk_weather.click();
 
 	}
+	public boolean isWeatherLinkDisplayed() {
+
+		return lnk_weather.isDisplayed();
+
+	}
+
 	public boolean isTwoHourLinkDisplayed() {
 
 		return lnk_twoHour.isDisplayed();

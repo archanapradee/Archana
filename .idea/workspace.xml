@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04e51286-3638-4bed-97d4-0c3f559e257b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pagefactory/HomePage_PF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pagefactory/WeatherPage_PF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="04e51286-3638-4bed-97d4-0c3f559e257b" name="Default Changelist" comment="changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/WeatherSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/WeatherSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/Features/weather.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Features/weather.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/html/reports.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Features/weather.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Features/weather.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/StepDefinitions/TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StepDefinitions/TestRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/StepDefinitions/WeatherSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StepDefinitions/WeatherSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pagefactory/HomePage_PF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pagefactory/HomePage_PF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Reports/Extent_Automation_Report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Reports/Extent_Automation_Report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-reports/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-reports/report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,15 +65,13 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.WeatherToday">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,8 +155,24 @@
       <workItem from="1610808828932" duration="10656000" />
       <workItem from="1610844567643" duration="49883000" />
       <workItem from="1610933742641" duration="3612000" />
-      <workItem from="1610944314841" duration="1242000" />
+      <workItem from="1610944314841" duration="1678000" />
+      <workItem from="1611032883570" duration="7056000" />
     </task>
+    <task id="LOCAL-00001" summary="changes">
+      <created>1610946248222</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610946248222</updated>
+    </task>
+    <task id="LOCAL-00002" summary="changes">
+      <created>1610946290576</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610946290576</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +189,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

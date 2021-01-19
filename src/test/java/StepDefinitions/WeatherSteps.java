@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.maven.surefire.shared.io.FileUtils;
@@ -54,6 +55,7 @@ public class WeatherSteps {
     public void user_is_navigate_to_weather_home_page() {
 
         ExtentTest logger=extent.createTest("user_is_navigate_to_weather_home_page");
+        extent.attachReporter(reporter);
         logger.assignCategory("Automation Test Submission", "Extent-Report");
         logger.assignAuthor("Archana Pradeep");
         String projectPath = System.getProperty("user.dir");
@@ -69,14 +71,18 @@ public class WeatherSteps {
 
     @When("user select two hour NowCast")
     public void user_select_two_hour_now_cast() throws Exception {
-
-        home = new HomePage_PF(driver);
-        home.clickWeatherLink();
         ExtentTest logger = extent.createTest("user_select_two_hour_now_cast");
         extent.attachReporter(reporter);
+        home = new HomePage_PF(driver);
+        Assert.assertTrue(home.isWeatherLinkDisplayed());
+        home.clickWeatherLink();
+        driver.manage().timeouts().pageLoadTimeout(60,TimeUnit.SECONDS);
+       // ExtentTest logger = extent.createTest("user_select_two_hour_now_cast");
+
         if(home.isTwoHourLinkDisplayed())
         {
             home.clickTwoHourLink();
+            driver.manage().timeouts().pageLoadTimeout(40,TimeUnit.SECONDS);
             logger.log(Status.PASS, "Two Hour NowCast Weather Loaded");
             String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
             logger.log(Status.PASS , "Two hour page nowCast_Success",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
@@ -93,13 +99,13 @@ public class WeatherSteps {
 
      @When("User select four day forecast")
     public void user_select_four_day_forecast() throws Exception {
+         ExtentTest logger=extent.createTest("user_select_four_day_forecast");
        weather = new WeatherPage_PF(driver);
          extent.attachReporter(reporter);
-
-         ExtentTest logger=extent.createTest("user_select_four_day_forecast");
         if(weather.isFourDayLinkDisplayed())
         {
             weather.clickFourDayLink();
+            driver.manage().timeouts().pageLoadTimeout(40,TimeUnit.SECONDS);
             logger.log(Status.PASS, "four_day_forecast Weather displayed");
             String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
             logger.log(Status.PASS , "four_day_forecast",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
@@ -116,12 +122,14 @@ public class WeatherSteps {
 
     @Then("user validate day after tomorrow weather details Vs API Response")
     public void user_validate_day_after_tomorrow_weather_details_vs_api_response() throws Exception {
+        extent.attachReporter(reporter);
+        ExtentTest logger=extent.createTest("user_validate_day_after_tomorrow_weather_details_vs_api_response");
         weather = new WeatherPage_PF(driver);
-        String HighTemp = weather.getHighTemp();
-        String lowTemp = weather.getLowTemp();
+        String Web_HighTemp = weather.getHighTemp();
+        String Web_lowTemp = weather.getLowTemp();
         String Tomo = weather.getDate();
-        System.out.println("Low temperature is " + lowTemp);
-        System.out.println("High temperature is " + HighTemp);
+        System.out.println("Low temperature is " + Web_lowTemp);
+        System.out.println("High temperature is " + Web_HighTemp);
         System.out.println("Day After Tomo " + Tomo);
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given();
@@ -130,23 +138,28 @@ public class WeatherSteps {
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 200);
 
-        List<String> jsonResponse_low = response.jsonPath().getList("items.forecasts.temperature.low[0]");
-        List<String> jsonResponse_high = response.jsonPath().getList("items.forecasts.temperature.high[0]");
+        JsonPath jsonPathEvaluator = response.jsonPath();
+        String json_tempLow = jsonPathEvaluator.get("items.forecasts.temperature.low[0][1]").toString()+"°C";
+        String json_tempHigh = jsonPathEvaluator.get("items.forecasts.temperature.high[0][1]").toString()+"°C";
+
+        System.out.println("Low Temp for Day after tomorrow from API " + jsonPathEvaluator.get("items.forecasts.temperature.low[0][1]").toString()+"°C");
+
+      //  List<String> jsonResponse_low = response.jsonPath().getList("items.forecasts.temperature.low[0]");
+     //   List<String> jsonResponse_high = response.jsonPath().getList("items.forecasts.temperature.high[0]");
 
 
-        String json_tempLow = jsonResponse_low.toArray()[1].toString();
-        String Web_LowTemp = lowTemp.substring(0, 2);
+    //    String json_tempLow = jsonResponse_low.toArray()[1].toString();
+      //  String Web_LowTemp = lowTemp.substring(0, 2);
 
-        String json_tempHigh = jsonResponse_high.toArray()[1].toString();
-        String Web_HighTemp =HighTemp.substring(0, 2);
-        extent.attachReporter(reporter);
-        ExtentTest logger=extent.createTest("user_validate_day_after_tomorrow_weather_details_vs_api_response");
+      //  String json_tempHigh = jsonResponse_high.toArray()[1].toString();
+      //  String Web_HighTemp =HighTemp.substring(0, 2);
 
-        if ((json_tempLow.equals(Web_LowTemp)) && (json_tempHigh.equals(Web_HighTemp))) {
+
+        if ((json_tempLow.equalsIgnoreCase(Web_lowTemp)) && (json_tempHigh.equalsIgnoreCase(Web_HighTemp))) {
 
             logger.log(Status.INFO, "High Temp from UI:" +Web_HighTemp);
             logger.log(Status.INFO, "High Temp from API:" +json_tempHigh);
-            logger.log(Status.INFO, "Low Temp from UI:" +Web_LowTemp);
+            logger.log(Status.INFO, "Low Temp from UI:" +Web_lowTemp);
             logger.log(Status.INFO, "Low Temp from API:" +json_tempLow);
             String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
             logger.log(Status.PASS , "user_validate_weather_details as pass",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
@@ -154,7 +167,7 @@ public class WeatherSteps {
         else{
             logger.log(Status.FAIL, "High Temp from UI:" +Web_HighTemp);
             logger.log(Status.INFO, "High Temp from API:" +json_tempHigh);
-            logger.log(Status.INFO, "Low Temp from UI:" +Web_LowTemp);
+            logger.log(Status.INFO, "Low Temp from UI:" +Web_lowTemp);
             logger.log(Status.INFO, "Low Temp from API:" +json_tempLow);
             String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
             logger.log(Status.FAIL , "user_validate_weather_details as fail",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
