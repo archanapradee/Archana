@@ -15,9 +15,9 @@ public class HomePage_PF{
 	WebDriver driver;
 	ConfigFileReader configFileReader;
 	@FindBy(xpath = "//header/div[1]/nav[1]/ul[1]/li[1]/a[1]")
-	WebElement lnk_weather;
+	private WebElement lnk_weather;
 	@FindBy(xpath = "//a[contains(text(),'2-hr Nowcast')]")
-	WebElement lnk_twoHour;
+	private WebElement lnk_twoHour;
 
 
 	public HomePage_PF(WebDriver driver) {
