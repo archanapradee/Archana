@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04e51286-3638-4bed-97d4-0c3f559e257b" name="Default Changelist" comment="changes">
+      <change afterPath="$PROJECT_DIR$/.idea/Archana.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Configs/Configuration.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Configs/extent-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dataProvider/ConfigFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/WeatherSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/WeatherSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pagefactory/HomePage_PF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pagefactory/HomePage_PF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pagefactory/WeatherPage_PF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pagefactory/WeatherPage_PF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Reports/Extent_Automation_Report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Reports/Extent_Automation_Report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber-reports/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-reports/report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/StepDefinitions/TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StepDefinitions/TestRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/StepDefinitions/WeatherSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StepDefinitions/WeatherSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pagefactory/HomePage_PF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pagefactory/HomePage_PF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pagefactory/WeatherPage_PF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pagefactory/WeatherPage_PF.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,24 +64,28 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Hima\Archana" />
       <recent name="C:\Users\prade\WeatherToday\src\test\java\uhm\resources" />
       <recent name="C:\Users\prade\WeatherToday\src\test\java" />
       <recent name="C:\Users\prade\WeatherToday\src\test\source" />
       <recent name="E:\Projects\Cucumber\WeatherSg\src\test\resources\drivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dataProvider" />
       <recent name="dataProviders" />
       <recent name="extension" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.WeatherToday">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -108,7 +122,7 @@
       </method>
     </configuration>
     <configuration name="WeatherToday" type="JUnit" factoryName="JUnit">
-      <module name="WeatherToday" />
+      <module name="Archana" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="StepDefinitions.*" />
@@ -157,6 +171,7 @@
       <workItem from="1610933742641" duration="3612000" />
       <workItem from="1610944314841" duration="1678000" />
       <workItem from="1611032883570" duration="7056000" />
+      <workItem from="1611281452185" duration="4269000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1610946248222</created>

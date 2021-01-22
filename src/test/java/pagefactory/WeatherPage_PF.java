@@ -34,25 +34,50 @@ public class WeatherPage_PF {
 	}
 	public boolean isFourDayLinkDisplayed() {
 
-		return FourDayLink.isDisplayed();
-
+		boolean returnVal;
+		try {
+			FourDayLink.isDisplayed();
+			returnVal = true;
+		} catch (Exception e) {
+			returnVal = false;
+		}
+		return returnVal;
 	}
 
 	public void clickFourDayLink() {
 
 		FourDayLink.click();
+		try { Thread.sleep(2000);}
+
+		catch (InterruptedException e){
+			e.printStackTrace();
+		}
 
 	}
 
 	public String getHighTemp(){
-		return HighTemp.getText();
-	}
+		String result="error";
+		try{
+
+			result=HighTemp.getText(); //Assuming everything goes well, return success.
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return result;
+
+		}
 	public String getLowTemp(){
-		return LowTemp.getText();
+		String result="error";
+		try{
+
+			result=LowTemp.getText(); //Assuming everything goes well, return success.
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return result;
+
 	}
 
-	public String getDate(){
-		return DayAfterTomorrow.getText();
-	}
+
 
 	}

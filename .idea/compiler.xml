@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="WeatherSg" />
         <module name="WeatherToday" />
+        <module name="Archana" />
       </profile>
     </annotationProcessing>
   </component>

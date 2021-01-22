@@ -58,12 +58,15 @@ public class WeatherSteps {
         extent.attachReporter(reporter);
         logger.assignCategory("Automation Test Submission", "Extent-Report");
         logger.assignAuthor("Archana Pradeep");
-        String projectPath = System.getProperty("user.dir");
-        System.setProperty("webdriver.chrome.driver", projectPath+"/src/test/resources/drivers/chromedriver.exe");
+       String projectPath = System.getProperty("user.dir");
+      //  System.setProperty("webdriver.chrome.driver", FileReaderManager.configFileReader.getDriverPath());
+
+       System.setProperty("webdriver.chrome.driver", projectPath+"/src/test/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         extent.flush();
+        home = new HomePage_PF(driver);
         driver.navigate().to(URL);
         driver.manage().timeouts().pageLoadTimeout(40,TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -73,7 +76,7 @@ public class WeatherSteps {
     public void user_select_two_hour_now_cast() throws Exception {
         ExtentTest logger = extent.createTest("user_select_two_hour_now_cast");
         extent.attachReporter(reporter);
-        home = new HomePage_PF(driver);
+
         Assert.assertTrue(home.isWeatherLinkDisplayed());
         home.clickWeatherLink();
         driver.manage().timeouts().pageLoadTimeout(60,TimeUnit.SECONDS);
@@ -102,21 +105,23 @@ public class WeatherSteps {
          ExtentTest logger=extent.createTest("user_select_four_day_forecast");
        weather = new WeatherPage_PF(driver);
          extent.attachReporter(reporter);
-        if(weather.isFourDayLinkDisplayed())
-        {
-            weather.clickFourDayLink();
-            driver.manage().timeouts().pageLoadTimeout(40,TimeUnit.SECONDS);
-            logger.log(Status.PASS, "four_day_forecast Weather displayed");
-            String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
-            logger.log(Status.PASS , "four_day_forecast",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-        }
-        else
-        {
-
-            logger.log(Status.FAIL, "four_day_forecast Weather not displayed");
-            String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
-            logger.log(Status.FAIL , "four_day_forecast",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-        }
+         Assert.assertTrue(weather.isFourDayLinkDisplayed());
+         if(weather.isFourDayLinkDisplayed())
+         {
+             try {
+                 weather.clickFourDayLink();
+                 driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+                 logger.log(Status.PASS, "four_day_forecast Weather displayed");
+                 String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
+                 logger.log(Status.PASS, "four_day_forecast", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+             }
+             catch(InterruptedException e)
+             {
+                 logger.log(Status.FAIL, "four_day_forecast Weather not displayed");
+                 String screenshotPath = WeatherSteps.getScreenshot(driver, "before");
+                 logger.log(Status.FAIL , "four_day_forecast",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+             }
+         }
 
     }
 
@@ -127,10 +132,10 @@ public class WeatherSteps {
         weather = new WeatherPage_PF(driver);
         String Web_HighTemp = weather.getHighTemp();
         String Web_lowTemp = weather.getLowTemp();
-        String Tomo = weather.getDate();
+       // String Tomo = weather.getDate();
         System.out.println("Low temperature is " + Web_lowTemp);
         System.out.println("High temperature is " + Web_HighTemp);
-        System.out.println("Day After Tomo " + Tomo);
+     //   System.out.println("Day After Tomo " + Tomo);
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given();
         request.header("Content-Type", "application/json");
@@ -144,15 +149,6 @@ public class WeatherSteps {
 
         System.out.println("Low Temp for Day after tomorrow from API " + jsonPathEvaluator.get("items.forecasts.temperature.low[0][1]").toString()+"°C");
 
-      //  List<String> jsonResponse_low = response.jsonPath().getList("items.forecasts.temperature.low[0]");
-     //   List<String> jsonResponse_high = response.jsonPath().getList("items.forecasts.temperature.high[0]");
-
-
-    //    String json_tempLow = jsonResponse_low.toArray()[1].toString();
-      //  String Web_LowTemp = lowTemp.substring(0, 2);
-
-      //  String json_tempHigh = jsonResponse_high.toArray()[1].toString();
-      //  String Web_HighTemp =HighTemp.substring(0, 2);
 
 
         if ((json_tempLow.equalsIgnoreCase(Web_lowTemp)) && (json_tempHigh.equalsIgnoreCase(Web_HighTemp))) {
